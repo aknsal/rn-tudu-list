@@ -8,6 +8,7 @@ const ListTasks = ({ taskList }) => {
   console.log(taskList);
   return (
     <FlatList
+      style={styles.container}
       keyExtraxtor={(item, index) => item.id}
       data={taskList}
       renderItem={(itemData) => (
@@ -22,5 +23,6 @@ export default ListTasks;
 const styles = StyleSheet.create({
   container: {
     flex: 10,
+    margin: 10,
   },
 });

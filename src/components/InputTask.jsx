@@ -26,9 +26,10 @@ const InputTask = ({ addTasks }) => {
         value={task}
         placeholder="Enter Task"
         onChangeText={handleChange}
+        autoFocus
       />
       <TouchableOpacity style={styles.button} onPress={addTaskHandler}>
-        <Text>+</Text>
+        <Text style={{ fontSize: 16, color: "#fff" }}>Add</Text>
       </TouchableOpacity>
     </View>
   );
@@ -41,21 +42,27 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "flex-start",
     justifyContent: "center",
-    marginTop: 30,
+    marginTop: 50,
   },
   input: {
     height: 40,
-    width: 200,
+    fontSize: 20,
+    flex: 1,
     padding: 3,
-    marginLeft: 5,
+    marginLeft: 10,
     marginRight: 5,
-    borderRadius: 5,
-    borderWidth: 1,
+    marginBottom: 30,
+    borderBottomColor: "#447868",
+    borderBottomWidth: 2,
   },
   button: {
     alignItems: "flex-start",
     padding: 10,
+    paddingRight: 20,
+    paddingLeft: 20,
+    marginLeft: 5,
+    marginRight: 5,
     borderRadius: 5,
-    backgroundColor: "#DDDDDD",
+    backgroundColor: "#447868",
   },
 });
