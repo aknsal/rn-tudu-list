@@ -1,21 +1,21 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
+import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import HomeScreen from "./src/screens/HomeScreen";
+import { init } from "./src/helper/db";
+
+init()
+  .then(() => {
+    console.log("Initialized Database");
+  })
+  .catch((err) => {
+    console.log("Initializing Database Error", err);
+  });
 
 export default function App() {
-  const [taskList, setTaskList] = useState([]);
-
-  function addTasks(task) {
-    setTaskList((prevTasks) => [
-      ...prevTasks,
-      { id: Math.random().toString(), value: task },
-    ]);
-  }
-
   return (
     <View style={styles.container}>
-      <HomeScreen addTasks={addTasks} taskList={taskList} />
+      <HomeScreen />
       <StatusBar style="auto" />
     </View>
   );

@@ -5,10 +5,10 @@ import { View, Text, StyleSheet } from "react-native";
 import InputTask from "../components/InputTask";
 import ListTasks from "../components/ListTasks";
 
-const HomeScreen = ({ addTasks, taskList }) => (
+const HomeScreen = () => (
   <View style={styles.container}>
-    <InputTask addTasks={addTasks} />
-    <ListTasks taskList={taskList} />
+    <InputTask />
+    <ListTasks />
   </View>
 );
 

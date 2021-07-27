@@ -8,14 +8,20 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
+import { insertTask } from "../helper/db";
 
 const InputTask = ({ addTasks }) => {
   const [task, setTask] = useState("");
   const handleChange = (enteredText) => {
     setTask(enteredText);
   };
-  const addTaskHandler = () => {
-    addTasks(task);
+  const addTaskHandler = async () => {
+    try {
+      const dbResult = await insertTask(task);
+      console.log("dbResult", dbResult);
+    } catch (e) {
+      console.log("Error While inserting", e);
+    }
     setTask("");
   };
   console.log(task);
