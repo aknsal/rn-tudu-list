@@ -1,1 +1,3 @@
-# rn-tudu-list
+# TUDU List
+### React Native Application
+
