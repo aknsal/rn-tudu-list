@@ -1,6 +1,6 @@
 /* @flow weak */
 
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,8 +9,9 @@ import {
   TouchableOpacity,
 } from "react-native";
 import { insertTask } from "../helper/db";
+import { getData } from "../helper/getData";
 
-const InputTask = ({ addTasks }) => {
+const InputTask = ({ updateTaskList }) => {
   const [task, setTask] = useState("");
   const handleChange = (enteredText) => {
     setTask(enteredText);
@@ -19,11 +20,24 @@ const InputTask = ({ addTasks }) => {
     try {
       const dbResult = await insertTask(task);
       console.log("dbResult", dbResult);
+      setTask("");
+      const list = await getData();
+      console.log("List", list);
+      updateTaskList(list);
     } catch (e) {
       console.log("Error While inserting", e);
     }
-    setTask("");
   };
+
+  useEffect(async () => {
+    try {
+      const list = await getData();
+      console.log("List", list);
+      updateTaskList(list);
+    } catch (e) {
+      console.log("Error While retriving data", e);
+    }
+  }, []);
   console.log(task);
   return (
     <View style={styles.container}>
