@@ -11,7 +11,7 @@ const HomeScreen = () => {
   return (
     <View style={styles.container}>
       <InputTask updateTaskList={updateTaskList} />
-      <ListTasks taskList={taskList} />
+      <ListTasks updateTaskList={updateTaskList} taskList={taskList} />
     </View>
   );
 };

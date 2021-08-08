@@ -55,3 +55,21 @@ export const fetchTask = () => {
   });
   return promise;
 };
+
+export const removeTask = (taskID) => {
+  const promise = new Promise((resolve, reject) => {
+    db.transaction((tx) => {
+      tx.executeSql(
+        "DELETE FROM Tasks WHERE ID=?",
+        [taskID],
+        (_, result) => {
+          resolve(result);
+        },
+        (_, err) => {
+          reject(err);
+        }
+      );
+    });
+  });
+  return promise;
+};
